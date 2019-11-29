@@ -255,7 +255,7 @@ function file_video(path){
 	</video>
 	<br />
 	<!-- 固定标签 -->
-	<div class="mdui-textfield">
+	<div class="mdui-textfield mdui-col-md-12">
 	  <label class="mdui-textfield-label">文件外部地址</label>
 	  <input class="mdui-textfield-input" type="text" value="${url}"/>
 	</div>	
