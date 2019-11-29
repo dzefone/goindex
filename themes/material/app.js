@@ -231,11 +231,11 @@ function file_video(path){
 	var url = window.location.origin + path;
 	var content = `
 <div class="mdui-container-fluid">
-	<br>
+	<br />
 	<video class="mdui-video-fluid mdui-center" style="width:80%" preload controls>
 	  <source src="${url}" type="video/mp4">
 	</video>
-	<br>
+	<br />
 	<!-- 固定标签 -->
 	<div class="mdui-textfield">
 	  <label class="mdui-textfield-label">文件外部地址</label>
