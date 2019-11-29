@@ -84,7 +84,25 @@ function list(path){
 	 </div>
 	 <div id="readme_md" class="mdui-typo" style="display:none; padding: 20px 0;"></div>
 	`;
-	$('#content').html(content);   
+	$('#content').html(content);
+	var password = localStorage.getItem('password'+path);	
+	$('#list').html(`<div class="mdui-progress"><div class="mdui-progress-indeterminate"></div></div>`);	
+	$('#readme_md').hide().html('');	
+	$('#head_md').hide().html('');	
+	$.post(path,'{"password":"'+password+'"}', function(data,status){	
+		var obj = jQuery.parseJSON(data);	
+		if(typeof obj != 'null' && obj.hasOwnProperty('error') && obj.error.code == '401'){	
+			var pass = prompt("目录加密，请输入密码","");	
+			localStorage.setItem('password'+path, pass);	
+			if(pass != null && pass != ""){	
+				list(path);	
+			}else{	
+				history.go(-1);	
+			}	
+		}else if(typeof obj != 'null'){	
+			list_files(path,obj.files);	
+		}	
+	});
 }
 
 function list_files(path,files){
